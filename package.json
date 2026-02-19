@@ -5,13 +5,20 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "test": "jest"
+    "test": "jest",
+  
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:deploy": "prisma migrate deploy",
+    "prisma:studio": "prisma studio",
+    "prisma:pull": "prisma db pull"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@prisma/client": "^5.22.0",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
     "mysql2": "^3.17.0"
@@ -19,6 +26,7 @@
   "devDependencies": {
     "jest": "^30.2.0",
     "nodemon": "^3.1.11",
+    "prisma": "^5.22.0",
     "supertest": "^7.2.2"
   },
   "jest": {
