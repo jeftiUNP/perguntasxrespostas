@@ -3,15 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js",
-    "start": "node server.js",
-    "test": "jest",
-  
-    "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev",
-    "prisma:deploy": "prisma migrate deploy",
-    "prisma:studio": "prisma studio",
-    "prisma:pull": "prisma db pull"
+    "dev": "nodemon src/server.js",
+    "start": "prisma migrate deploy && node src/server.js",
+    "test": "npm run prepare:testdb && jest --runInBand",
+    "prepare:testdb": "npx prisma migrate deploy --schema=prisma/schema.test.prisma"
   },
   "keywords": [],
   "author": "",
@@ -24,12 +19,19 @@
     "mysql2": "^3.17.0"
   },
   "devDependencies": {
+    "cross-env": "^10.1.0",
     "jest": "^30.2.0",
     "nodemon": "^3.1.11",
     "prisma": "^5.22.0",
     "supertest": "^7.2.2"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "setupFiles": [
+      "<rootDir>/tests/jest.env.js"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/tests/jest.setup.js"
+    ]
   }
 }
