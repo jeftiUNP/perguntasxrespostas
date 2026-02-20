@@ -1,0 +1,11 @@
+Ideas:
+- mqtt
+- eslint
+- husky
+- prettier
+- docker
+- githubactions
+- cache
+- cookies
+- logging
+- indexes for db
